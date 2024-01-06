@@ -21,6 +21,7 @@ class Snake:
             self.add_part(position)
 
     def add_part(self, position):
+        '''function to add a part to the snake'''
         part_snake = Turtle("square")
         part_snake.color("white")
         part_snake.penup()
@@ -28,6 +29,7 @@ class Snake:
         self.allparts.append(part_snake)
 
     def extend(self):
+        '''function to extend when the snake eats'''
         self.add_part(self.allparts[-1].position())
 
     def move(self):
