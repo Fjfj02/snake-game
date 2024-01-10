@@ -59,3 +59,11 @@ class Snake:
         '''function to go right'''
         if self.head.heading() != left:
             self.head.setheading(right)
+
+    def reset(self):
+        '''function to reset the snake'''
+        for part in self.allparts:
+            part.goto(1000, 1000)
+        self.allparts.clear()
+        self.create_snake()
+        self.head = self.allparts[0]
