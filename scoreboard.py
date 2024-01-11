@@ -10,7 +10,8 @@ class Score(Turtle):
         '''function to create the subclass Score'''
         super().__init__()
         self.score = 0
-        self.high_score = 0
+        with open("data.txt") as data:
+            self.high_score = int(data.read())
         self.color("white")
         self.penup()
         self.goto(0,270)
@@ -20,7 +21,7 @@ class Score(Turtle):
 
     def update(self):
         self.clear()
-        self.write(f"Score: {self.score} (High Score = {self.high_score})", align = align, font = font)
+        self.write(f"Score: {self.score} (High Score: {self.high_score})", align = align, font = font)
 
     def add_score(self):
         '''function to mark the score on the screen'''
@@ -31,6 +32,8 @@ class Score(Turtle):
         '''function to reset score'''
         if self.score > self.high_score:
             self.high_score = self.score
+            with open("data.txt", mode = "w") as data:
+                data.write(f"{self.high_score}")
         self.score = 0
         self.update()
 
